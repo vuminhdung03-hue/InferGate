@@ -89,4 +89,10 @@ The agent runtime only discovers skills inside its own config directory, so the 
 
 ## Notes
 
-_Add notes here as the build progresses — workarounds, patterns, anything that differs from the context files._
+**`.github/workflows/` does not exist yet** — it is the one directory from `architecture.md`'s tree that was not created. GitHub rejects any push touching that path unless the credential carries `workflow` scope, and an empty placeholder there earned nothing. Before the CI workflow lands, run:
+
+```
+gh auth refresh -h github.com -s workflow
+```
+
+**No Helm chart files exist yet**, so `helm template` will fail with "chart not found" rather than rendering empty output. That is intended — see the skeleton decision above. The chart is built in feature 11.
